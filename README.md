@@ -1,13 +1,16 @@
----ISP---(root toor)
+# Модуль 1
+## ISP (root toor)
+```
 ip -c a
-vim /etc/net/ifaces/ens18 (выход ESC, q!)
+vim /etc/net/ifaces/ens18/options (выход ESC, q!)
 apt-get update
 systemctl status iptables
 iptables -t nat -L
 sysctl -a | grep ip_forward
 timedatectl (проверить время)
-
----HQ-RTR---(admin admin)
+```
+## HQ-RTR (admin admin)
+```
 enable
 show ip interface brief
 show ip route
@@ -19,8 +22,9 @@ show ip ospf neighbor
 ping 192.168.2.2 c4
 show run (скрин портов где vlan) 
 show ip nat translations
-
----BR-RTR---(admin admin)
+```
+## BR-RTR (admin admin)
+```
 enable
 show ip interface brief
 show ip route
@@ -32,8 +36,9 @@ show ip ospf neighbor
 ping 192.168.1.2 c4
 show run (скрин портов где vlan)
 show ip nat translations
-
----HQ-SRV---(root toor sshuser P@ssw0rd)
+```
+## HQ-SRV (root toor sshuser P@ssw0rd)
+```
 hostname
 ip -c a
 apt-get update
@@ -45,8 +50,9 @@ exit
 exit
 systemctl status bind
 timedatectl (проверить время)
-
----BR-SRV---(root toor sshuser P@ssw0rd)
+```
+## BR-SRV (root toor sshuser P@ssw0rd)
+```
 hostname
 ip -c a
 apt-get update
@@ -57,8 +63,9 @@ ssh -P 2024 192.168.1.2 (P@ssw0rd, проверить 2 попытки и бан
 exit
 exit
 timedatectl (проверить время)
-
----HQ-CLI---(user resu)
+```
+# HQ-CLI (user resu)
+```
 hostname
 apt-get update
 timedatectl (проверить время)
@@ -69,3 +76,5 @@ ping br-rtr -c4
 ping br-srv -c4
 ping wiki -c4
 ping moodle -c4
+```
+# Модуль 2
