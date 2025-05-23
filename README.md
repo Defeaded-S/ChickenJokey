@@ -1,71 +1,71 @@
-# ChickenJokey---ISP---(корневой доступ)
-ip-ca
-vim /etc/net/ifaces/ens18 (нужно ESC, q!)
-обновление apt-get
-systemctl статус iptables
+---ISP---(root toor)
+ip -c a
+vim /etc/net/ifaces/ens18 (выход ESC, q!)
+apt-get update
+systemctl status iptables
 iptables -t nat -L
 sysctl -a | grep ip_forward
-timedatectl (карта)
+timedatectl (проверить время)
 
----HQ-RTR---(админ админ)
-давать возможность
-показать краткое описание интерфейса IP
-показать ip маршрут
-пинг 8.8.8.8 c4
-показать статус ntp
-показать дату ntp
-пинг 172.16.100.2 c4
-показать ip ospf соседа
-пинг 192.168.2.2 c4
-show run (подключенный к сети vlan)
-показать переводы ip nat
+---HQ-RTR---(admin admin)
+enable
+show ip interface brief
+show ip route
+ping 8.8.8.8 c4
+show ntp status
+show ntp date
+ping 172.16.100.2 c4
+show ip ospf neighbor
+ping 192.168.2.2 c4
+show run (скрин портов где vlan) 
+show ip nat translations
 
----BR-RTR---(админ админ)
-давать возможность
-показать краткое описание интерфейса IP
-показать ip маршрут
-пинг 8.8.8.8 c4
-показать статус ntp
-показать дату ntp
-пинг 172.16.100.1 c4
-показать ip ospf соседа
-пинг 192.168.1.2 c4
-show run (подключенный к сети vlan)
-показать переводы ip nat
+---BR-RTR---(admin admin)
+enable
+show ip interface brief
+show ip route
+ping 8.8.8.8 c4
+show ntp status
+show ntp date
+ping 172.16.100.1 c4
+show ip ospf neighbor
+ping 192.168.1.2 c4
+show run (скрин портов где vlan)
+show ip nat translations
 
----HQ-SRV---(пользователь root или sshuser P@ssw0rd)
-имя хоста
-ip-ca
-обновление apt-get
-su - sshuser (команда sudo недоступна)
-судо -i
-Выход
-ssh -P 2024 192.168.2.2 (P@ssw0rd, пароль 2-х адресов)
-Выход
-Выход
-systemctl статус привязки
-timedatectl (карта)
+---HQ-SRV---(root toor sshuser P@ssw0rd)
+hostname
+ip -c a
+apt-get update
+su - sshuser (проверить sudo без пароля)
+sudo -i
+exit
+ssh -P 2024 192.168.2.2 (P@ssw0rd, проверить 2 попытки и баннер)
+exit
+exit
+systemctl status bind
+timedatectl (проверить время)
 
----BR-SRV---(пользователь root или sshuser P@ssw0rd)
-имя хоста
-ip-ca
-обновление apt-get
-су - сшусер
-sudo -i (перевести sudo в режим)
-Выход
-ssh -P 2024 192.168.1.2 (P@ssw0rd, пароль 2-х мест)
-Выход
-Выход
-timedatectl (карта)
+---BR-SRV---(root toor sshuser P@ssw0rd)
+hostname
+ip -c a
+apt-get update
+su - sshuser
+sudo -i (проверить sudo без пароля)
+exit
+ssh -P 2024 192.168.1.2 (P@ssw0rd, проверить 2 попытки и баннер)
+exit
+exit
+timedatectl (проверить время)
 
----HQ-CLI---(пользователь resu)
-имя хоста
-обновление apt-get
-timedatectl (карта)
-пинг hq-rtr -c4
-пинг hq-srv -c4
-пинг hq-cli -c4
-пинг br-rtr -c4
-пинг br-srv -c4
-пинг вики -c4
-пинг moodle -c4
+---HQ-CLI---(user resu)
+hostname
+apt-get update
+timedatectl (проверить время)
+ping hq-rtr -c4
+ping hq-srv -c4
+ping hq-cli -c4
+ping br-rtr -c4
+ping br-srv -c4
+ping wiki -c4
+ping moodle -c4
