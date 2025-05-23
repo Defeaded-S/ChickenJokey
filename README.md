@@ -1,5 +1,5 @@
 # Модуль 1
-## ISP (root toor)
+### ISP (root toor)
 ```
 ip -c a
 vim /etc/net/ifaces/ens18/options (выход ESC, q!)
@@ -9,7 +9,7 @@ iptables -t nat -L
 sysctl -a | grep ip_forward
 timedatectl (проверить время)
 ```
-## HQ-RTR (admin admin)
+### HQ-RTR (admin admin)
 ```
 enable
 show ip interface brief
@@ -23,7 +23,7 @@ ping 192.168.2.2 c4
 show run (скрин портов где vlan) 
 show ip nat translations
 ```
-## BR-RTR (admin admin)
+### BR-RTR (admin admin)
 ```
 enable
 show ip interface brief
@@ -37,7 +37,7 @@ ping 192.168.1.2 c4
 show run (скрин портов где vlan)
 show ip nat translations
 ```
-## HQ-SRV (root toor)
+### HQ-SRV (root toor)
 ```
 hostname
 ip -c a
@@ -51,7 +51,7 @@ exit
 systemctl status bind
 timedatectl (проверить время)
 ```
-## BR-SRV (root toor)
+### BR-SRV (root toor)
 ```
 hostname
 ip -c a
@@ -64,7 +64,7 @@ exit
 exit
 timedatectl (проверить время)
 ```
-# HQ-CLI (user resu)
+### HQ-CLI (user resu)
 ```
 hostname
 apt-get update
@@ -78,7 +78,7 @@ ping wiki -c4
 ping moodle -c4
 ```
 # Модуль 2
-## HQ-RTR (admin admin)
+### HQ-RTR (admin admin)
 ```
 enable
 ping 8.8.8.8 c4
@@ -87,7 +87,7 @@ show ntp date
 show run
 show ip nat translations
 ```
-## BR-RTR (admin admin)
+### BR-RTR (admin admin)
 ```
 enable
 ping 8.8.8.8 c4
@@ -96,7 +96,7 @@ show ntp date
 show run
 show ip nat translations
 ```
-## HQ-SRV (root toor)
+### HQ-SRV (root toor)
 ```
 apt-get update
 df -h (внизу должен быть /dev/md0 2G /raid5)
@@ -106,7 +106,7 @@ systemctl status chrony
 chronyc clients
 timedatectl 
 ```
-## BR-SRV (root toor)
+### BR-SRV (root toor)
 ```
 apt-get update
 timedatectl 
@@ -114,7 +114,7 @@ cat /etc/ansible/ansible.cfg | less (выход q или ctrl + c)
 chronyc sources (должно вывести сервер, главное чтобы не пусто)
 ansible -m ping all (на всех должно быть pong)
 ```
-# HQ-CLI (user resu)
+### HQ-CLI (user resu)
 ```
 apt-get update
 df -h (внизу должен быть /mnt/nfs)
