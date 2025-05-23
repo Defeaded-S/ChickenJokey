@@ -37,7 +37,7 @@ ping 192.168.1.2 c4
 show run (скрин портов где vlan)
 show ip nat translations
 ```
-## HQ-SRV (root toor sshuser P@ssw0rd)
+## HQ-SRV (root toor)
 ```
 hostname
 ip -c a
@@ -45,13 +45,13 @@ apt-get update
 su - sshuser (проверить sudo без пароля)
 sudo -i
 exit
-ssh -P 2024 192.168.2.2 (P@ssw0rd, проверить 2 попытки и баннер)
+ssh -p 2024 192.168.2.2 (P@ssw0rd, проверить 2 попытки и баннер)
 exit
 exit
 systemctl status bind
 timedatectl (проверить время)
 ```
-## BR-SRV (root toor sshuser P@ssw0rd)
+## BR-SRV (root toor)
 ```
 hostname
 ip -c a
@@ -59,7 +59,7 @@ apt-get update
 su - sshuser
 sudo -i (проверить sudo без пароля)
 exit
-ssh -P 2024 192.168.1.2 (P@ssw0rd, проверить 2 попытки и баннер)
+ssh -p 2024 192.168.1.2 (P@ssw0rd, проверить 2 попытки и баннер)
 exit
 exit
 timedatectl (проверить время)
@@ -78,3 +78,50 @@ ping wiki -c4
 ping moodle -c4
 ```
 # Модуль 2
+## HQ-RTR (admin admin)
+```
+enable
+ping 8.8.8.8 c4
+show ntp status
+show ntp date
+show run
+show ip nat translations
+```
+## BR-RTR (admin admin)
+```
+enable
+ping 8.8.8.8 c4
+show ntp status
+show ntp date
+show run
+show ip nat translations
+```
+## HQ-SRV (root toor)
+```
+apt-get update
+df -h (внизу должен быть /dev/md0 2G /raid5)
+systemctl status nfs-server
+vim /etc/chrony.conf (выход ESC, q!)
+systemctl status chrony
+chronyc clients
+timedatectl 
+```
+## BR-SRV (root toor)
+```
+apt-get update
+timedatectl 
+cat /etc/ansible/ansible.cfg | less (выход q или ctrl + c)
+chronyc sources (должно вывести сервер, главное чтобы не пусто)
+ansible -m ping all (на всех должно быть pong)
+```
+# HQ-CLI (user resu)
+```
+apt-get update
+df -h (внизу должен быть /mnt/nfs)
+chronyc sources (должно вывести сервер, главное чтобы не пусто)
+Проверить на рабочем столе Яндекс Браузер :)
+Через проводник создать файл с текстом в папке /mnt/nfs
+Зайти на HQ-SRV и проверить появился ли он:
+ls /raid5/nfs
+cat /raid5/nfs/<название файла>
+```
