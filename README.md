@@ -99,7 +99,7 @@ show ip nat translations
 ### HQ-SRV (root toor)
 ```
 apt-get update
-df -h (внизу должен быть /dev/md0 2G /raid5)
+df -h (внизу должен быть /dev/md0 /raid0)
 systemctl status nfs-server
 vim /etc/chrony.conf (выход ESC, q!)
 systemctl status chrony
